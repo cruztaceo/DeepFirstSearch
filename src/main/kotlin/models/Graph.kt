@@ -1,7 +1,7 @@
 package models
 
 class Graph {
-    private val adjacencyMap: HashMap<Int, HashSet<Int>> = HashMap()
+    val adjacencyMap: HashMap<Int, HashSet<Int>> = HashMap()
 
     fun addEdge(sourceVertex: Int, targetVertex: Int) {
         // Add edge to source node.
@@ -10,8 +10,8 @@ class Graph {
         adjacencyMap.computeIfAbsent(targetVertex) { HashSet() }.add(sourceVertex)
     }
 
-    fun adjacentEdges(v: Int){
-        adjacencyMap[v]
+    fun adjacentEdges(v: Int): HashSet<Int>? {
+        return adjacencyMap[v]?.toHashSet()
     }
 
     override fun toString(): String = StringBuffer().apply {
